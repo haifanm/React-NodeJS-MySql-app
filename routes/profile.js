@@ -4,8 +4,9 @@ const profileController = require("../controllers/profileController");
 
 const router = express.Router();
 
-// router.put("/edit", authenticateToken, profileController.editProfile);
 
+router.delete("/", authenticateToken ,profileController.deleteProfile);
+router.put("/", authenticateToken ,profileController.editProfile);
 router.get("/", authenticateToken ,profileController.viewProfile);
 
 

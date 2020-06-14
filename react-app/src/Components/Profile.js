@@ -76,6 +76,60 @@ export default function Profile() {
       });
   }
 
+  const deleteAccountAction = () => {
+
+    axios({
+      url: "/api/profile",
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + Auth.getToken()
+      }
+    })
+      .then(function (response) {
+
+        if (response.status === 200){ 
+          Auth.logout();
+          Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "You account has been deleted",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
+          history.push("/home")
+        }
+
+        else if (response.status === 403){ 
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "You don't have access",
+            showConfirmButton: false,
+            timer: 1500
+          })
+          Auth.logout();
+
+          history.push("/home")
+        }
+        else {
+        }
+      })
+      .catch(function (response) {
+        history.push("/home")
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: "You don't have access",
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .finally( ()=> {
+        setLoading(false);
+      });
+    
+  }
   return (
   <div>
     <Navbar/>
@@ -94,7 +148,7 @@ export default function Profile() {
           edit profile
         </Button>
 
-        <Button style={{margin:'10px'}} onClick={() => console.log('this button deletes your account')} variant="contained" component="span" color="secondary">
+        <Button style={{margin:'10px'}} onClick={() => deleteAccountAction()} variant="contained" component="span" color="secondary">
           delete account
         </Button>
 

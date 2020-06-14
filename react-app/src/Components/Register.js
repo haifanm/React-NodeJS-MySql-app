@@ -51,7 +51,7 @@ function Register() {
 
           setMessage();
           console.log("registered:)!!!");
-          history.push("/home")
+          history.push("/login")
         }
           
         else {
@@ -63,12 +63,6 @@ function Register() {
       .catch(function (error) {
         console.log(error);
       });
-    // .then(() => {
-    //   console.log("Data has been sent to the server");
-    // })
-    // .catch(() => {
-    //   console.log("Data was not sent to the server");
-    // });
   };
 
   return (

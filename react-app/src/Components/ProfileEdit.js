@@ -15,16 +15,12 @@ function ProfileEdit() {
     register,
     errors,
     handleSubmit,
-    // watch,
-    // triggerValidation,
     control,
   } = useForm({
     mode: "onChange",
   });
 
   const onSubmit = async (data) => {
-    console.log("on submit:");
-    console.log(data);
     history.push("/profile")
 
     axios({
@@ -50,7 +46,6 @@ function ProfileEdit() {
       }
         
       else {
-        console.log("response.message");
         console.log(response.data.message);
       }
     })

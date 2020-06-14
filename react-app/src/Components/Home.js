@@ -22,7 +22,6 @@ export default function Home() {
   useEffect(() => {
     setLoading(true); // here 
     getUsersData();
-    console.log(loading)
   }, [])
   
   const columns = React.useMemo(
@@ -57,7 +56,6 @@ export default function Home() {
 
   const getUsersData = () => {
     
-    console.log(data)
     axios({
       url: "/api/users",
       method: "GET",
@@ -69,15 +67,10 @@ export default function Home() {
           if(usersdata.length > 0){
             setData(usersdata)
           }
-          
-  
-          console.log("GOT MY DATA :)");
-          console.log(data)
+
         }
           
         else {
-          
-          console.log("response.message");
           console.log(response.data.message);
         }
       })

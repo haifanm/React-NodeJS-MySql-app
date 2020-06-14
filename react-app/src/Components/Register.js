@@ -26,20 +26,16 @@ function Register() {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
 
     let hashedPassword = await bcrypt.hash(data.password, 8);
     data.password=hashedPassword;
     
-    console.log("pass: "+data.password)
     axios({
       url: "/api/auth/register",
       method: "POST",
       data: data,
     })
       .then(function (response) {
-        console.log("here?")
-        console.log(response)
         if (response.status === 200 && response.data.message==="added"){ 
           Swal.fire({
             position: 'top-end',
@@ -50,12 +46,10 @@ function Register() {
           })
 
           setMessage();
-          console.log("registered:)!!!");
           history.push("/login")
         }
           
         else {
-          console.log("response.message");
           console.log(response.data.message);
           setMessage(response.data.message);
         }

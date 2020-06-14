@@ -4,7 +4,6 @@ const dbconfig = require('../db.config');
 //MySql database connection
 const db = mysql.createPool(dbconfig);
 
-//accepts the username and the access token 
 exports.getUsersData = (req, res) => {
 
   //get profile data from database

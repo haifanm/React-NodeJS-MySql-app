@@ -18,15 +18,12 @@ export default function Profile() {
   useEffect(() => {
     setLoading(true); // here 
     getProfileData();
-    console.log(loading)
   }, [])
   
   const getProfileData = () => {
     const userData={
       token: Auth.getToken()
     }
-    console.log("in function")
-    console.log(userData)
     axios({
       url: "/api/profile",
       method: "GET",
@@ -37,14 +34,11 @@ export default function Profile() {
       .then(function (response) {
 
 
-        console.log("here? in main then")
         if (response.status === 200){ 
           
           const profiledata= response.data
           setData(profiledata)
   
-          console.log("GOT MY DATA :)");
-          console.log(profiledata)
         }
 
         else if (response.status === 403){ 

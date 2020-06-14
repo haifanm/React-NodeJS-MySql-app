@@ -1,6 +1,5 @@
 import Auth from "../Auth";
 import React from "react";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2"
 

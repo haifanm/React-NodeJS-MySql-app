@@ -35,7 +35,7 @@ function Register() {
     
     console.log("pass: "+data.password)
     axios({
-      url: "/auth/register",
+      url: "/api/auth/register",
       method: "POST",
       data: data,
     })

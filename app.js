@@ -44,10 +44,10 @@ app.use(morgan("tiny"));
 
 //Define Routes 
 
-app.use("/auth", require("./routes/auth"));
-app.use("/profile", require("./routes/profile"));
-app.use("/users", require("./routes/users"));
-app.use("/", require("./routes/pages"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/profile", require("./routes/profile"));
+app.use("/api/users", require("./routes/users"));
+// app.use("/", require("./routes/pages"));
 
 
 //production mode

@@ -34,7 +34,7 @@ export default function Profile() {
     console.log("in function")
     console.log(data)
     axios({
-      url: "/profile",
+      url: "/api/profile",
       method: "GET",
       headers: {
         Authorization: "Bearer " + data.token

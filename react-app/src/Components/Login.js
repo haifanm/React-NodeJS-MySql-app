@@ -27,7 +27,7 @@ function Login() {
     
     // console.log("pass: "+data.password)
     axios({
-      url: "/auth/login",
+      url: "/api/auth/login",
       method: "POST",
       data: data,
     })

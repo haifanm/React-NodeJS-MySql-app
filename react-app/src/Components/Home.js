@@ -57,7 +57,7 @@ export default function Home() {
   const getUsersData = () => {
     
     axios({
-      url: "/users",
+      url: "/api/users",
       method: "GET",
     })
       .then(function (response) {
@@ -71,6 +71,7 @@ export default function Home() {
         }
           
         else {
+          setData([{username:"",email:"",age:"",phone:"",country:"",company:""}])
           console.log("response.message");
           console.log(response.data.message);
         }

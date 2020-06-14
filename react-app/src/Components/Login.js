@@ -20,17 +20,12 @@ function Login() {
     mode: "onChange",
   });
   const onSubmit = async (data) => {
-
-    console.log(data);
-
     axios({
       url: "/api/auth/login",
       method: "POST",
       data: data,
     })
       .then(function (response) {
-        console.log("here?")
-        console.log(response)
         if (response.status === 200 && response.data.message==="loggedin"){ 
           Swal.fire({
             position: 'top-end',
@@ -40,7 +35,6 @@ function Login() {
             timer: 1500
           })
           setMessage();
-          console.log("logged in:)!!!");
 
           //get token from response
           //send token to auth.login

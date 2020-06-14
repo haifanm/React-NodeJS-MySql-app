@@ -57,6 +57,7 @@ exports.register = (req, res) => {
 };
 
 exports.login = async (req, res) => {
+
   try {
     const { username, password } = req.body;
 
@@ -65,9 +66,11 @@ exports.login = async (req, res) => {
       [username],
       async (error, results) => {
         try {
+          const valid = await bcrypt.compare(password, results[0].password);
+
           if (
             !results>0 ||
-            !(bcrypt.compare(password, results[0].password))
+            !(valid)
           ) {
             res.json({
               message: "Incorrent login credentials",

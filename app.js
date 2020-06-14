@@ -2,7 +2,6 @@ const morgan = require("morgan");
 const express = require("express");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
-const cookieParser = require("cookie-parser");
 
 const path = require('path');
 const dbconfig = require('./db.config');

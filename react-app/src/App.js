@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import {Redirect} from "react-router-dom";
-import "./App.css";
+import "./styles/App.css";
 import Home from "./Components/Home";
 import Profile from "./Components/Profile";
 import ProfileEdit from "./Components/ProfileEdit";

@@ -1,12 +1,9 @@
 const mysql = require("mysql");
+const dbconfig = require('../db.config');
 
 //MySql database connection
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-});
+const db = mysql.createPool(dbconfig);
+
 //accepts the username and the access token 
 exports.getUsersData = (req, res) => {
 

@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 
 const path = require('path');
+const dbconfig = require('./db.config');
 
 dotenv.config({ path: "./.env" });
 
@@ -14,12 +15,13 @@ const PORT = process.env.PORT || 5000;
 
 
 //MySql database connection
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-});
+const db = mysql.createPool(dbconfig);
+// const db = mysql.createConnection({
+//   host: process.env.DATABASE_HOST,
+//   user: process.env.DATABASE_USER,
+//   password: process.env.DATABASE_PASSWORD,
+//   database: process.env.DATABASE,
+// });
 
 //parse url encoded bodies (as sent by form)
 app.use(express.urlencoded({ extended: false }));
@@ -33,10 +35,10 @@ app.use(express.static(path.join(__dirname, 'react-app/build')));
 
 
 
-db.connect((error) => {
-  if (error) console.log(error);
-  else console.log("mysql connected!!");
-});
+// db.connect((error) => {
+//   if (error) console.log(error);
+//   else console.log("mysql connected!!");
+// });
 
 //HTTP request logger
 app.use(morgan("tiny"));

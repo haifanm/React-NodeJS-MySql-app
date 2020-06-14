@@ -14,18 +14,16 @@ function authenticateToken(req, res, next){
   const token = authHeader && authHeader.split(' ')[1]
 
   if(token == null){
-    // return res.sendStatus(401).json({
-    //     message: "Error verifying user."
-    // })
-    return ;
+    return res.status(403).json({
+      message: "noaccess"
+    })
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, username) => {
     if(err){
-         return res.sendStatus(403).json({
-              message: "noaccess"
+        return res.status(403).json({
+          message: "noaccess"
         })
-        return ;
     }
 
     req.username = username;

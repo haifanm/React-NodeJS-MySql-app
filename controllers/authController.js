@@ -1,14 +1,10 @@
 const mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const dbconfig = require('../db.config');
 
 //MySql database connection
-const db = mysql.createConnection({
-  host: process.env.DATABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-});
+const db = mysql.createPool(dbconfig);
 
 exports.register = (req, res) => {
   console.log(req.body);

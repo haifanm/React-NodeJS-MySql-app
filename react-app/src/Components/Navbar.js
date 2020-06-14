@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2"
 
-import "../App.css";
+import "../styles/App.css";
 
 export default function Navbar() {
     const [isAuthenticated, setIsAuthenticated] = React.useState(Auth.isAuthenticated());
@@ -27,7 +27,7 @@ export default function Navbar() {
           </ul>
         </nav>
        :
-       <nav className="navbar">
+       <nav className="navbarLoggedin">
           <h2>Cogent App</h2>
           <ul>
             <li>

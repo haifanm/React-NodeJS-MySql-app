@@ -45,6 +45,7 @@ nav {
   align-items: right;
   align-content: right;
   justify-content: space-between;
+  font-size: 17px;
 }
 
 nav ul {
@@ -69,10 +70,13 @@ nav li a:hover {
   text-decoration: none;
 }
 
+.navbarLoggedin {
+  background-color: #3039b8;
+}
 
 .logoutButton {
-  background-color: rgb(160, 36, 36);
-  border-radius: 10px;
+  background-color: rgb(196, 37, 37);
+  border-radius: 8px;
 }
 
 .profileDataDiv {

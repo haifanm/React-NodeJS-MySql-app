@@ -11,12 +11,13 @@ import ReactLoading from 'react-loading';
 import { useTable } from "react-table";
 
 import Navbar from "./Navbar";
+import Auth from "../Auth";
 import "../styles/style.css";
 
 export default function Home() {
 
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([{username:"",email:"",age:"",phone:"",country:"",company:""}]);
 
   useEffect(() => {
     setLoading(true); // here 
@@ -56,6 +57,7 @@ export default function Home() {
 
   const getUsersData = () => {
     
+    console.log(data)
     axios({
       url: "/api/users",
       method: "GET",
@@ -64,14 +66,17 @@ export default function Home() {
         if (response.status === 200){ 
           
           const usersdata= response.data.results
-          setData(usersdata)
+          if(usersdata.length > 0){
+            setData(usersdata)
+          }
+          
   
           console.log("GOT MY DATA :)");
           console.log(data)
         }
           
         else {
-          setData([{username:"",email:"",age:"",phone:"",country:"",company:""}])
+          
           console.log("response.message");
           console.log(response.data.message);
         }
@@ -91,7 +96,7 @@ export default function Home() {
     <h1>Our Users</h1>
 
     {loading 
-    ? <ReactLoading className="loading" type={"spin"} color={"#19bb34"} height={200}  />
+    ? <ReactLoading className="loading" type={"spin"} color={Auth.isAuthenticated()?"#3039b8":"#19bb34"} height={200}  />
     : <div className="profileDataDiv">
       <CssBaseline />
       <Table columns={columns} data={data} />      

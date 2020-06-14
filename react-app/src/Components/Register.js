@@ -27,7 +27,6 @@ function Register() {
   });
 
   const onSubmit = async (data) => {
-    alert(JSON.stringify(data));
     console.log(data);
 
     let hashedPassword = await bcrypt.hash(data.password, 8);
@@ -131,7 +130,7 @@ function Register() {
       <label htmlFor="phone">Phone Number</label>
       <input
         name="phone"
-        placeholder="+96133333333"
+        placeholder="96133333333"
         ref={register({
           required: "this is required",
           maxLength: {
@@ -139,7 +138,7 @@ function Register() {
             message: "Max length is 18",
           },
           pattern: {
-            value: /^[+][0-9]+/,
+            value: /^[0-9]+/,
             message: "Invalid age value",
           },
         })}

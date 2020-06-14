@@ -19,13 +19,9 @@ function Login() {
     mode: "onChange",
   });
   const onSubmit = async (data) => {
-    alert(JSON.stringify(data));
+
     console.log(data);
 
-    // let hashedPassword = await bcrypt.hash(data.password, 8);
-    // data.password=hashedPassword;
-    
-    // console.log("pass: "+data.password)
     axios({
       url: "/api/auth/login",
       method: "POST",
@@ -67,7 +63,7 @@ function Login() {
     <div>
       <Navbar/>
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Please fill in your information</h1>
+      <h1>Please enter your login credentials</h1>
       {message ? <p>{message}</p> : <div></div> }
       <label htmlFor="username">Username</label>
       <input

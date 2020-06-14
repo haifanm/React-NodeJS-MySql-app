@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "react": "cd react-app && npm start",
-    "nodestart": "node app.js",
-    "start": "concurrently -n 'node,react' -c 'blue,green' \"nodemon app.js\" \"npm run react\"",
+    "start": "node app.js",
+    "start2": "concurrently -n 'node,react' -c 'blue,green' \"nodemon app.js\" \"npm run react\"",
     "heroku-postbuild": "cd react-app && npm install && npm run build"
   },
   "keywords": [],

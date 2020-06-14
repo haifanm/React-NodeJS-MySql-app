@@ -132,7 +132,7 @@ function Register() {
           },
           pattern: {
             value: /^[0-9]+/,
-            message: "Invalid age value",
+            message: "Invalid phone number",
           },
         })}
       />

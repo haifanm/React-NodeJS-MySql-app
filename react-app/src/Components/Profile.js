@@ -90,9 +90,14 @@ export default function Profile() {
         <h4>Phone: {data.profile.phone}</h4>
         <h4>Country: {data.profile.country}</h4>
         <h4>Company: {data.profile.company}</h4>
-        <Button onClick={()=> history.push("/editprofile")} variant="contained" color="secondary">
+        <Button style={{margin:'10px'}} onClick={()=> history.push("/editprofile")} variant="contained" component="span" color="primary">
           edit profile
         </Button>
+
+        <Button style={{margin:'10px'}} onClick={() => console.log('this button deletes your account')} variant="contained" component="span" color="secondary">
+          delete account
+        </Button>
+
       </div>}
     
     

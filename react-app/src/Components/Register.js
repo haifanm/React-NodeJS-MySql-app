@@ -7,7 +7,6 @@ import axios from "axios";
 import bcrypt from "bcryptjs";
 import Swal from "sweetalert2";
 
-import Auth from "../Auth";
 import Navbar from "./Navbar";
 
 import "../styles/style.css";

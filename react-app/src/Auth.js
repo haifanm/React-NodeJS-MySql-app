@@ -1,30 +1,25 @@
+import Cookies from 'js-cookie'
+
 class Auth {
 
     constructor(){
-        this.authenticated = false;
         this.token=""
     }
 
-    //should accept token as parameter
     login(token){
-        this.authenticated = true;
-        this.token=token;  //shouls passed token here
-        console.log("login: this.authenticated = true; wtih token: "+this.token);
+        Cookies.set('user', token);
     }
 
-    //set authenticated to false and clear token
     logout(){
-        this.authenticated = false;
-        console.log("logout: this.authenticated = false;");
-        this.token="";
+        Cookies.remove('user');
     }
 
     isAuthenticated(){
-        return this.authenticated;
+        return Cookies.get('user');
     }
 
     getToken(){
-        return this.token;
+        return Cookies.get('user');
     }
 }
 

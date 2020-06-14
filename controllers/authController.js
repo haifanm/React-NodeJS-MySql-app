@@ -78,7 +78,7 @@ exports.login = async (req, res) => {
           console.log("comparing here: "+password+" and "+results[0].password);
           if (
             !results>0 ||
-            !(password === results[0].password)
+            !(bcrypt.compare(password, results[0].password))
           ) {
             res.json({
               message: "Incorrent login credentials",
@@ -86,15 +86,9 @@ exports.login = async (req, res) => {
             console.log("Incorrent login credentials");
             return;
           } else {
-            const id = results[0].username;
-            res.status(200).json({
-              message: "loggedin",
-            });
-            return;
+            
             //cookies
-            // const token = jwt.sign({ id: id }, process.env.JWT_SECRET, {
-            //   expiresIn: process.env.JWT_EXPIRES_IN,
-            // });
+            const token = jwt.sign( username , process.env.JWT_SECRET);
 
             // console.log("token: " + token);
 
@@ -107,11 +101,14 @@ exports.login = async (req, res) => {
             // };
 
             // res.cookie("jwt", token, cookieOptions);
-            // res.status(200);
+            res.status(200).json({
+              message: "loggedin",
+              token: token
+            });
           }
         } catch (error) {
           res.json({
-            message: error.message,
+            message: "Incorrent login credentials",
           });
         }
       }

@@ -20,7 +20,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
   color: white;
 }
 
@@ -38,7 +38,7 @@
 }
 
 nav {
-  background-color: #4837df;
+  background-color: #19bb34;
   color: white;
   padding: 10px 20px;
   display: flex;
@@ -65,7 +65,7 @@ nav li a {
 }
 
 nav li a:hover {
-  color: yellow;
+  color: rgb(95, 95, 95);
   text-decoration: none;
 }
 
@@ -73,4 +73,8 @@ nav li a:hover {
 .logoutButton {
   background-color: rgb(160, 36, 36);
   border-radius: 10px;
+}
+
+.profileDataDiv {
+  margin-left: 20px;
 }

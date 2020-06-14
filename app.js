@@ -34,8 +34,12 @@ db.connect((error) => {
 app.use(morgan("tiny"));
 
 
-//Define Routes
-app.use("/", require("./routes/pages"));
+//Define Routes 
+
 app.use("/auth", require("./routes/auth"));
+app.use("/profile", require("./routes/profile"));
+app.use("/users", require("./routes/users"));
+app.use("/", require("./routes/pages"));
+
 
 app.listen(PORT, console.log(`Server started at port ${PORT}`));

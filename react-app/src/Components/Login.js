@@ -2,10 +2,11 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import bcrypt from "bcryptjs";
-import Auth from "../Auth";
+import Swal from "sweetalert2"
 
-import "./style.css";
+import Auth from "../Auth";
+import Navbar from "./Navbar";
+import "../styles/style.css";
 
 function Login() {
   let history = useHistory();
@@ -21,10 +22,10 @@ function Login() {
     alert(JSON.stringify(data));
     console.log(data);
 
-    let hashedPassword = await bcrypt.hash(data.password, 8);
-    data.password=hashedPassword;
+    // let hashedPassword = await bcrypt.hash(data.password, 8);
+    // data.password=hashedPassword;
     
-    console.log("pass: "+data.password)
+    // console.log("pass: "+data.password)
     axios({
       url: "/auth/login",
       method: "POST",
@@ -34,9 +35,20 @@ function Login() {
         console.log("here?")
         console.log(response)
         if (response.status === 200 && response.data.message==="loggedin"){ 
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Login Successful',
+            showConfirmButton: false,
+            timer: 1500
+          })
           setMessage();
           console.log("logged in:)!!!");
-          Auth.login()
+
+          //get token from response
+          //send token to auth.login
+          Auth.login(response.data.token)
+          
           history.push("/home")
         }
           
@@ -52,6 +64,8 @@ function Login() {
   };
 
   return (
+    <div>
+      <Navbar/>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Please fill in your information</h1>
       {message ? <p>{message}</p> : <div></div> }
@@ -75,6 +89,7 @@ function Login() {
 
       <input type="submit" />
     </form>
+    </div>
   );
 }
 

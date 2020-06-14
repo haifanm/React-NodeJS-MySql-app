@@ -57,7 +57,7 @@ label {
 
 button[type="submit"],
 input[type="submit"] {
-  background: #4837df;
+  background: #19bb34;;
   color: white;
   text-transform: uppercase;
   border: none;
@@ -70,7 +70,7 @@ input[type="submit"] {
 
 button[type="submit"]:hover,
 input[type="submit"]:hover {
-  background: #25179e;
+  background: #19a130;
 }
 
 button[type="submit"]:active,
@@ -125,4 +125,12 @@ button {
   text-transform: uppercase;
   padding: 10px 20px;
   border-radius: 4px;
+}
+
+.loading {
+  position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%);
 }

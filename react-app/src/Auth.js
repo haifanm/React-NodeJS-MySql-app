@@ -6,9 +6,9 @@ class Auth {
     }
 
     //should accept token as parameter
-    login(){
+    login(token){
         this.authenticated = true;
-        this.token="TOKEN";  //shouls passed token here
+        this.token=token;  //shouls passed token here
         console.log("login: this.authenticated = true; wtih token: "+this.token);
     }
 

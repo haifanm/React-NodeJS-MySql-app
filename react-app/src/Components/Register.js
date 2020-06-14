@@ -5,9 +5,12 @@ import countryList from "react-select-country-list";
 import ReactSelect from "react-select";
 import axios from "axios";
 import bcrypt from "bcryptjs";
-import Auth from "../Auth";
+import Swal from "sweetalert2";
 
-import "./style.css";
+import Auth from "../Auth";
+import Navbar from "./Navbar";
+
+import "../styles/style.css";
 
 function Register() {
   let history = useHistory();
@@ -22,6 +25,7 @@ function Register() {
   } = useForm({
     mode: "onChange",
   });
+
   const onSubmit = async (data) => {
     alert(JSON.stringify(data));
     console.log(data);
@@ -39,9 +43,16 @@ function Register() {
         console.log("here?")
         console.log(response)
         if (response.status === 200 && response.data.message==="added"){ 
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Account created',
+            showConfirmButton: false,
+            timer: 1500
+          })
+
           setMessage();
           console.log("registered:)!!!");
-          Auth.login()
           history.push("/home")
         }
           
@@ -63,6 +74,8 @@ function Register() {
   };
 
   return (
+    <div>
+      <Navbar/>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Please fill in your information</h1>
       {message ? <p>{message}</p> : <div></div> }
@@ -195,6 +208,7 @@ function Register() {
 
       <input type="submit" />
     </form>
+    </div>
   );
 }
 
